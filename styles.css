@@ -1,6 +1,7 @@
 :root {
-  --colorBase: black;
-  --colorBody: rgb(238, 238, 238);
+  --colorBase: rgb(245, 245, 245);
+  --colorBody: rgb(29, 29, 29);
+  --colorAction: rgb(84, 255, 149);
   --sizeBase: 15px;
 }
 body {
@@ -43,23 +44,54 @@ a {
   display: grid;
   gap: var(--sizeBase);
   @media (min-width: 1000px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 article a {
-  display: block;
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   padding: var(--sizeBase);
   border: 1px solid var(--colorBase);
   border-radius: 10px;
   transition: all 200ms;
+  aspect-ratio: 4 / 3;
   &:hover {
-    background-color: var(--colorBase);
+    background-color: var(--colorAction);
     color: var(--colorBody);
+    border-color: transparent;
   }
+  &.inactive {
+    opacity: .2;
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+article h2 {
+  margin-bottom: auto;
 }
 
 article li {
   font-family: monospace;
+  text-transform: lowercase;
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin-top: calc(var(--sizeBase) * 3);
+  padding: var(--sizeBase);
+  border: none;
+  border-radius: 5px;
+  transition: all 200ms;
+  font-size: calc(var(--sizeBase) * 1.5);
+  background-color: var(--colorBase);
+  cursor: pointer;
+  &:hover {
+    background-color: var(--colorAction);
+    color: var(--colorBody);
+    
+  }
 }
