@@ -57,11 +57,15 @@ article a {
   border: 1px solid var(--colorBase);
   border-radius: 10px;
   transition: all 200ms;
+  position: relative;
   aspect-ratio: 4 / 3;
   &:hover {
     background-color: var(--colorAction);
     color: var(--colorBody);
     border-color: transparent;
+    img {
+      filter: blur(0px);
+    }
   }
   &.inactive {
     opacity: .2;
@@ -70,8 +74,21 @@ article a {
   }
 }
 
+article img {
+  object-fit: cover;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  top: 0; right: 0; bottom: 0; left: 0;
+  filter: blur(10px);
+}
+
 article h2 {
   margin-bottom: auto;
+  position: relative;
+  z-index: 2;
 }
 
 article li {
